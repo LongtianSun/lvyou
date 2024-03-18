@@ -34,10 +34,17 @@
                 <ul>
                     <li>
                         <p><i class="iconfont icon-dian"></i></p>
-                        <div class="context"></div>
+                        <div class="context">
+                            <img src="@/assets/index/start.png" alt="">
+                            <div class="content">
+                                <p><span>出发：</span> 武汉 （武汉天河国际机场）08:10</p>
+                                <p><span>到达：</span> 珠海 （珠海金湾机场）10:05</p>
+                            </div>
+                        </div>
                         <p><i class="iconfont icon-dian"></i></p>
                     </li>
-                    <p></p>
+                    <p class="travel"><i class="iconfont icon-buxing"></i> 2.63km</p>
+                    <Card></Card>
                 </ul>
             </div>
         </div>
@@ -49,10 +56,12 @@
 
 <script>
 import headerQY from '@/views/components/header.vue'
+import Card from '@/views/components/AttractionCard.vue'
 export default {
     name: 'detail',
     components: {
-        headerQY
+        headerQY,
+        Card
     }
 }
 </script>
@@ -68,8 +77,6 @@ export default {
     justify-content: space-between;
     .body-left {
         width: 638px;
-        height: 500px;
-        background-color: pink;
         border: 1px solid #dddddd;
         .day {
             .title {
@@ -105,7 +112,6 @@ export default {
             ul {
                 li {
                     height: 210px;
-                    background-color: red;
                     padding: 0 30px;
                     p {
                         height: 30px;
@@ -114,7 +120,31 @@ export default {
                     }
                     .context {
                         height: 150px;
+                        display: flex;
+                        img {
+                            height: 200px;
+                            height: 150px;
+                        }
+                        .content {
+                            margin-left: 15px;
+                            p {
+                                height: 24px;
+                                font-size: 16px;
+                                color: #323232;
+                                span {
+                                    color: #636363;
+                                }
+                            }
+                        }
                     }
+                }
+                .travel {
+                    height: 30px;
+                    padding: 0 30px;
+                    font-size: 12px;
+                    color: #959595;
+                    line-height: 30px;
+                    background-color: #fbfbfb;
                 }
             }
         }

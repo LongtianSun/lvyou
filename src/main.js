@@ -9,6 +9,7 @@ import '@/iconfont/iconfont.css'
 Vue.config.productionTip = false
 Vue.use(ElementUI);
 
+console.log(process.env)
 new Vue({
   router,
   store,
