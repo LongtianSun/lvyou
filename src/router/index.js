@@ -18,6 +18,11 @@ const routes = [
     path: '/detail',
     name: '/detail',
     component: () => import('@/components/detail.vue')
+  },
+  {
+    path: '/detailMap',
+    name: '/detailMap',
+    component: () => import('@/components/detailMap.vue')
   }
 ]
 

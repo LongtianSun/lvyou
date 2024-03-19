@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="father">
     <headerQY></headerQY>
     <header>
         <div class="bg"></div>
@@ -45,10 +45,22 @@
                     </li>
                     <p class="travel"><i class="iconfont icon-buxing"></i> 2.63km</p>
                     <Card></Card>
+                    <p class="travel"><i class="iconfont icon-buxing"></i> 2.63km</p>
+
+                    <Card></Card>
+                    <p class="travel"><i class="iconfont icon-buxing"></i> 2.63km</p>
+
+                    <Card></Card>
+                    <p class="travel"><i class="iconfont icon-buxing"></i> 2.63km</p>
+
+                    <Card></Card>
+                    <p class="travel"><i class="iconfont icon-buxing"></i> 2.63km</p>
+
+                    <Card></Card>
                 </ul>
             </div>
         </div>
-        <div class="body-right">
+        <div ref="move" class="body-right" @click="$router.push('/detailMap')">
         </div>
     </div>
   </div>
@@ -59,14 +71,47 @@ import headerQY from '@/views/components/header.vue'
 import Card from '@/views/components/AttractionCard.vue'
 export default {
     name: 'detail',
+    data () {
+        return {
+            moveLeft: 0,
+        }
+    },
     components: {
         headerQY,
         Card
+    },
+    created() {
+    },
+    mounted() {
+        this.moveLeft = this.$refs.move.offsetLeft
+        window.addEventListener('scroll', this.scrollEvent)
+    },
+    methods: {
+        scrollEvent () {
+            if(document.documentElement.scrollTop > 430) {
+                this.$refs.move.style.left = this.moveLeft + 'px'
+                this.$refs.move.className = 'move'
+            } else {
+                this.$refs.move.className = 'body-right'
+            }
+        }
+    },
+    destroyed() {
+        // 切换路由时溢出window绑定scroll事件
+        window.removeEventListener('scroll', this.scrollEvent)
     }
 }
 </script>
 
 <style scoped lang="less">
+.move {
+    width: 438px;
+    height: 400px;
+    background: url('@/assets/index/mp.png') no-repeat center/cover;
+    cursor: pointer;
+    position: fixed;
+    top: 50px;
+}
 .wrapper {
     width: 1100px;
     margin: 0 auto;

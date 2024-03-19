@@ -7,7 +7,12 @@
                 <h5>九洲港</h5>
                 <p>
                     <el-rate v-model="value" disabled></el-rate>
+                    <span>11分</span>
                 </p>
+                <div class="user">
+                    <img src="@/assets/index/janAu.png" alt="">
+                    <p>JanAu ： 珠海境内都不需要出示港澳通行证，除非你是飞澳门机场或者香港机场然后到珠海。珠海大桥，金湾机场，九洲港码头都是珠海市内的</p>
+                </div>
             </div>
         </div>
     <p><i class="iconfont icon-dian"></i></p>
@@ -43,6 +48,7 @@ li {
         }
         .content {
             margin-left: 15px;
+            flex: 1;
             h5 {
                 font-size: 16px;
                 font-weight: 400;
@@ -53,6 +59,26 @@ li {
                 font-size: 0;
                 line-height: 12px;
                 height: 23px;
+            }
+            .user {
+                margin-top: 10px;
+                display: flex;
+                img {
+                    width: 24px;
+                    height: 24px;
+                    border-radius: 12px;
+                }
+                p {
+                    margin: 0 0 0 10px;
+                    padding-top: 0;
+                    width: 320px;
+                    line-height: 1.5;
+                    height: 52px;
+                    font-size: 12px;
+                    color: #636363;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
             }
         }
     }
