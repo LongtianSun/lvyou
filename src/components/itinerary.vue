@@ -29,222 +29,19 @@
             <div class="left">
                 <p>为您找到"武汉"相关行程结果 <span>46429</span> 条</p>
                 <ul>
-                    <li>
+                    <li v-for="(item, index) in 5" :key="index">
                         <div class="li-left" @click="goDetail">
                             <img src="@/assets/index/wuhan.png" alt="">
                         </div>
                         <div class="li-right">
                             <div class="row1">
-                                <h2 @click="goDetail">夏天的烂兔子 珠海-澳门-香港-广州行程</h2>
+                                <h2 @click="goDetail">武汉假期游 欢乐谷-黄鹤楼-武汉长江大桥-八分山</h2>
                                 <a href=""><i class="el-icon-document-copy"></i> 复制行程</a>
                             </div>
                             <div class="row2">
                                 <i class="el-icon-date"></i> 2018-02-14 出发
                             </div>
-                            <div class="row3">武汉 · 珠海 · 澳门 · 香港 · 广州</div>
-                            <div class="row4">
-                                <span>购物</span>
-                                <span>美食</span>
-                            </div>
-                            <div class="row5">
-                                <div class="user-info">
-                                    <img src="@/assets/index/Tx.png" alt="">
-                                    <span>夏天的烂兔子</span>
-                                </div>
-                                <div class="other-info">
-                                    <span>6698人浏览</span>
-                                    <span>183人复制</span>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="li-left" @click="goDetail">
-                            <img src="@/assets/index/wuhan.png" alt="">
-                        </div>
-                        <div class="li-right">
-                            <div class="row1">
-                                <h2 @click="goDetail">夏天的烂兔子 珠海-澳门-香港-广州行程</h2>
-                                <a href=""><i class="el-icon-document-copy"></i> 复制行程</a>
-                            </div>
-                            <div class="row2">
-                                <i class="el-icon-date"></i> 2018-02-14 出发
-                            </div>
-                            <div class="row3">武汉 · 珠海 · 澳门 · 香港 · 广州</div>
-                            <div class="row4">
-                                <span>购物</span>
-                                <span>美食</span>
-                            </div>
-                            <div class="row5">
-                                <div class="user-info">
-                                    <img src="@/assets/index/Tx.png" alt="">
-                                    <span>夏天的烂兔子</span>
-                                </div>
-                                <div class="other-info">
-                                    <span>6698人浏览</span>
-                                    <span>183人复制</span>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="li-left" @click="goDetail">
-                            <img src="@/assets/index/wuhan.png" alt="">
-                        </div>
-                        <div class="li-right">
-                            <div class="row1">
-                                <h2 @click="goDetail">夏天的烂兔子 珠海-澳门-香港-广州行程</h2>
-                                <a href=""><i class="el-icon-document-copy"></i> 复制行程</a>
-                            </div>
-                            <div class="row2">
-                                <i class="el-icon-date"></i> 2018-02-14 出发
-                            </div>
-                            <div class="row3">武汉 · 珠海 · 澳门 · 香港 · 广州</div>
-                            <div class="row4">
-                                <span>购物</span>
-                                <span>美食</span>
-                            </div>
-                            <div class="row5">
-                                <div class="user-info">
-                                    <img src="@/assets/index/Tx.png" alt="">
-                                    <span>夏天的烂兔子</span>
-                                </div>
-                                <div class="other-info">
-                                    <span>6698人浏览</span>
-                                    <span>183人复制</span>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="li-left" @click="goDetail">
-                            <img src="@/assets/index/wuhan.png" alt="">
-                        </div>
-                        <div class="li-right">
-                            <div class="row1">
-                                <h2 @click="goDetail">夏天的烂兔子 珠海-澳门-香港-广州行程</h2>
-                                <a href=""><i class="el-icon-document-copy"></i> 复制行程</a>
-                            </div>
-                            <div class="row2">
-                                <i class="el-icon-date"></i> 2018-02-14 出发
-                            </div>
-                            <div class="row3">武汉 · 珠海 · 澳门 · 香港 · 广州</div>
-                            <div class="row4">
-                                <span>购物</span>
-                                <span>美食</span>
-                            </div>
-                            <div class="row5">
-                                <div class="user-info">
-                                    <img src="@/assets/index/Tx.png" alt="">
-                                    <span>夏天的烂兔子</span>
-                                </div>
-                                <div class="other-info">
-                                    <span>6698人浏览</span>
-                                    <span>183人复制</span>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="li-left" @click="goDetail">
-                            <img src="@/assets/index/wuhan.png" alt="">
-                        </div>
-                        <div class="li-right">
-                            <div class="row1">
-                                <h2 @click="goDetail">夏天的烂兔子 珠海-澳门-香港-广州行程</h2>
-                                <a href=""><i class="el-icon-document-copy"></i> 复制行程</a>
-                            </div>
-                            <div class="row2">
-                                <i class="el-icon-date"></i> 2018-02-14 出发
-                            </div>
-                            <div class="row3">武汉 · 珠海 · 澳门 · 香港 · 广州</div>
-                            <div class="row4">
-                                <span>购物</span>
-                                <span>美食</span>
-                            </div>
-                            <div class="row5">
-                                <div class="user-info">
-                                    <img src="@/assets/index/Tx.png" alt="">
-                                    <span>夏天的烂兔子</span>
-                                </div>
-                                <div class="other-info">
-                                    <span>6698人浏览</span>
-                                    <span>183人复制</span>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="li-left" @click="goDetail">
-                            <img src="@/assets/index/wuhan.png" alt="">
-                        </div>
-                        <div class="li-right">
-                            <div class="row1">
-                                <h2 @click="goDetail">夏天的烂兔子 珠海-澳门-香港-广州行程</h2>
-                                <a href=""><i class="el-icon-document-copy"></i> 复制行程</a>
-                            </div>
-                            <div class="row2">
-                                <i class="el-icon-date"></i> 2018-02-14 出发
-                            </div>
-                            <div class="row3">武汉 · 珠海 · 澳门 · 香港 · 广州</div>
-                            <div class="row4">
-                                <span>购物</span>
-                                <span>美食</span>
-                            </div>
-                            <div class="row5">
-                                <div class="user-info">
-                                    <img src="@/assets/index/Tx.png" alt="">
-                                    <span>夏天的烂兔子</span>
-                                </div>
-                                <div class="other-info">
-                                    <span>6698人浏览</span>
-                                    <span>183人复制</span>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="li-left" @click="goDetail">
-                            <img src="@/assets/index/wuhan.png" alt="">
-                        </div>
-                        <div class="li-right">
-                            <div class="row1">
-                                <h2 @click="goDetail">夏天的烂兔子 珠海-澳门-香港-广州行程</h2>
-                                <a href=""><i class="el-icon-document-copy"></i> 复制行程</a>
-                            </div>
-                            <div class="row2">
-                                <i class="el-icon-date"></i> 2018-02-14 出发
-                            </div>
-                            <div class="row3">武汉 · 珠海 · 澳门 · 香港 · 广州</div>
-                            <div class="row4">
-                                <span>购物</span>
-                                <span>美食</span>
-                            </div>
-                            <div class="row5">
-                                <div class="user-info">
-                                    <img src="@/assets/index/Tx.png" alt="">
-                                    <span>夏天的烂兔子</span>
-                                </div>
-                                <div class="other-info">
-                                    <span>6698人浏览</span>
-                                    <span>183人复制</span>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="li-left" @click="goDetail">
-                            <img src="@/assets/index/wuhan.png" alt="">
-                        </div>
-                        <div class="li-right">
-                            <div class="row1">
-                                <h2 @click="goDetail">夏天的烂兔子 珠海-澳门-香港-广州行程</h2>
-                                <a href=""><i class="el-icon-document-copy"></i> 复制行程</a>
-                            </div>
-                            <div class="row2">
-                                <i class="el-icon-date"></i> 2018-02-14 出发
-                            </div>
-                            <div class="row3">武汉 · 珠海 · 澳门 · 香港 · 广州</div>
+                            <div class="row3">欢乐谷 · 黄鹤楼 · 武汉长江大桥 · 八分山</div>
                             <div class="row4">
                                 <span>购物</span>
                                 <span>美食</span>
@@ -277,6 +74,23 @@ import headerQY from '@/views/components/header'
 export default {
     components: {
         headerQY
+    },
+    data() {
+        return {
+            name: 'skt'
+        }
+    },
+    beforeCreate() {
+        console.log('beforeCreate',this.name,this.goDetail)
+    },
+    created() {
+        console.log('created',this.name,this.goDetail)
+    },
+    beforeMount() {
+        console.log('beforeMount',this.name,this.goDetail)
+    },
+    mounted() {
+        console.log('mounted',this.name,this.goDetail)
     },
     methods: {
         goDetail() {

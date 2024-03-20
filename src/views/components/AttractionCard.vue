@@ -2,9 +2,9 @@
   <li>
     <p><i class="iconfont icon-dian"></i></p>
         <div class="context">
-            <img src="@/assets/index/jiuzhou.png" alt="">
+            <img :src="ImgSrc" alt="">
             <div class="content">
-                <h5>九洲港</h5>
+                <h5>{{ title }}</h5>
                 <p>
                     <el-rate v-model="value" disabled></el-rate>
                     <span>11分</span>
@@ -22,9 +22,19 @@
 <script>
 export default {
     name: 'AttractionCard',
+    props: {
+        title: {
+            type: String,
+            default: '九州港'
+        },
+        ImgSrc: {
+            type: String,
+            default: '/images/hlg.png'
+        }
+    },
     data () {
         return {
-            value: 1
+            value: 4.5
         }
     }
 }

@@ -24,9 +24,6 @@ export default {
     hotCity,
     headerQY
   },
-  created() {
-    console.log(process.env.NODE_ENV)
-  },
   methods: {
     search() {
       this.$router.push('/itinerary')

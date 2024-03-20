@@ -9,7 +9,7 @@
                     <div class="left">
                         <img src="@/assets/index/Tx.png" alt="">
                         <div class="name">
-                            <h2>夏天的烂兔子 珠海-澳门-香港-广州行程</h2>
+                            <h2>夏天的烂兔子 欢乐谷-黄鹤楼-武汉长江大桥-八分山</h2>
                             <p>出发日期：2018-02-14</p>
                         </div>
                     </div>
@@ -28,7 +28,7 @@
                     <div class="left">D1</div>
                     <div class="right">
                         <p>02月14日 |</p>
-                        <h2>武汉 Wuhan <i class="iconfont arrow-right icon-arrow-right"></i> 珠海 Zhuhai</h2>
+                        <h2>武汉 Wuhan <i class="iconfont arrow-right icon-arrow-right"></i> 洪山宾馆</h2>
                     </div>
                 </div>
                 <ul>
@@ -37,26 +37,64 @@
                         <div class="context">
                             <img src="@/assets/index/start.png" alt="">
                             <div class="content">
-                                <p><span>出发：</span> 武汉 （武汉天河国际机场）08:10</p>
-                                <p><span>到达：</span> 珠海 （珠海金湾机场）10:05</p>
+                                <!-- <p><span>出发：</span> 武汉 （武汉天河国际机场）08:10</p> -->
+                                <p><span>到达：</span> 洪山宾馆 10:05</p>
                             </div>
                         </div>
                         <p><i class="iconfont icon-dian"></i></p>
                     </li>
-                    <p class="travel"><i class="iconfont icon-buxing"></i> 2.63km</p>
-                    <Card></Card>
-                    <p class="travel"><i class="iconfont icon-buxing"></i> 2.63km</p>
-
-                    <Card></Card>
-                    <p class="travel"><i class="iconfont icon-buxing"></i> 2.63km</p>
-
-                    <Card></Card>
-                    <p class="travel"><i class="iconfont icon-buxing"></i> 2.63km</p>
-
-                    <Card></Card>
-                    <p class="travel"><i class="iconfont icon-buxing"></i> 2.63km</p>
-
-                    <Card></Card>
+                </ul>
+            </div>
+            <div class="day">
+                <div class="title">
+                    <div class="left">D2</div>
+                    <div class="right">
+                        <p>02月14日 |</p>
+                        <h2> 洪山宾馆 <i class="iconfont arrow-right icon-arrow-right"></i> 欢乐谷</h2>
+                    </div>
+                </div>
+                <ul>
+                    <card title="欢乐谷" ImgSrc="./images/hlg.png"></card>
+                </ul>
+            </div>
+            <div class="day">
+                <div class="title">
+                    <div class="left">D3</div>
+                    <div class="right">
+                        <p>02月14日 |</p>
+                        <h2> 洪山宾馆 <i class="iconfont arrow-right icon-arrow-right"></i> 黄鹤楼</h2>
+                    </div>
+                </div>
+                <ul>
+                    <card title="黄鹤楼" ImgSrc="./images/D3.png"></card>
+                </ul>
+                <p style="padding-left: 27px; color: #2c3e50;;"><i class="iconfont icon-kaichela"></i></p>
+                <ul>
+                    <card title="武汉长江大桥" ImgSrc="./images/whcjdq.png"></card>
+                </ul>
+            </div>
+            <div class="day">
+                <div class="title">
+                    <div class="left">D4</div>
+                    <div class="right">
+                        <p>02月14日 |</p>
+                        <h2> 洪山宾馆 <i class="iconfont arrow-right icon-arrow-right"></i> 武汉大学</h2>
+                    </div>
+                </div>
+                <ul>
+                    <card title="武汉大学" ImgSrc="./images/whdx.png"></card>
+                </ul>
+            </div>
+            <div class="day">
+                <div class="title">
+                    <div class="left">D5</div>
+                    <div class="right">
+                        <p>02月14日 |</p>
+                        <h2> 洪山宾馆 <i class="iconfont arrow-right icon-arrow-right"></i> 武昌江滩</h2>
+                    </div>
+                </div>
+                <ul>
+                    <card title="武昌江滩" ImgSrc="./images/wcjt.png"></card>
                 </ul>
             </div>
         </div>
@@ -97,7 +135,7 @@ export default {
         }
     },
     destroyed() {
-        // 切换路由时溢出window绑定scroll事件
+        // 切换路由时移除window绑定scroll事件
         window.removeEventListener('scroll', this.scrollEvent)
     }
 }
@@ -121,9 +159,12 @@ export default {
     display: flex;
     justify-content: space-between;
     .body-left {
+        align-self: flex-start;
         width: 638px;
-        border: 1px solid #dddddd;
+        // border: 1px solid #dddddd;
         .day {
+            margin-bottom: 50px;
+            border: 1px solid #dddddd;
             .title {
                 height: 106px;
                 padding: 28px;
@@ -227,6 +268,7 @@ header {
                     height: 86px;
                     margin-left: 10px;
                     display: flex;
+                    flex: 1;
                     img {
                         width: 84px;
                         height: 84px;
