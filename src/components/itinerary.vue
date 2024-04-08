@@ -17,10 +17,10 @@
             <div class="tap wrapper">
                 <ul>
                     <li><div class="active">行程<span>(2000+)</span></div></li>
-                    <li><div>酒店</div></li>
+                    <!-- <li><div>酒店</div></li>
                     <li><div>帖子<span>(1000)</span></div></li>
                     <li><div>问答<span>(2000)</span></div></li>
-                    <li><div>旅行商城</div></li>
+                    <li><div>旅行商城</div></li> -->
                     <li><div>用户<span>(31)</span></div></li>
                 </ul>
             </div>
@@ -61,7 +61,7 @@
                 </ul>
             </div>
             <div class="right">
-                <div class="new-post"><i class="el-icon-edit"></i>创建我的行程</div>
+                <div class="new-post" @click="$router.push('/createitinerary')"><i class="el-icon-edit"></i>创建我的行程</div>
                 <div class="goto-forum">行程助手首页</div>
             </div>
         </div>

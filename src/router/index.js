@@ -23,6 +23,10 @@ const routes = [
     path: '/detailMap',
     name: '/detailMap',
     component: () => import('@/components/detailMap.vue')
+  },
+  {
+    path: '/createitinerary',
+    component: () => import('@/components/createitinerary/index.vue')
   }
 ]
 
