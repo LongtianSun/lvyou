@@ -80,18 +80,18 @@ export default {
             name: 'skt'
         }
     },
-    beforeCreate() {
-        console.log('beforeCreate',this.name,this.goDetail)
-    },
-    created() {
-        console.log('created',this.name,this.goDetail)
-    },
-    beforeMount() {
-        console.log('beforeMount',this.name,this.goDetail)
-    },
-    mounted() {
-        console.log('mounted',this.name,this.goDetail)
-    },
+    // beforeCreate() {
+    //     console.log('beforeCreate',this.name,this.goDetail)
+    // },
+    // created() {
+    //     console.log('created',this.name,this.goDetail)
+    // },
+    // beforeMount() {
+    //     console.log('beforeMount',this.name,this.goDetail)
+    // },
+    // mounted() {
+    //     console.log('mounted',this.name,this.goDetail)
+    // },
     methods: {
         goDetail() {
             this.$router.push('/detail')
