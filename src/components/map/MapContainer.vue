@@ -2,6 +2,18 @@
     <div>
         <div id="container"></div>
         <div class="show" id="my-panel"></div>
+        <div class="my-plan">
+            <h3>我的行程</h3>
+            <div class="content">
+                <ul>
+                    <li v-for="(item ,index) in planList" :key="item.selected.data.id">
+                        <i class="el-icon-error" @click="delPlan(item, index)"></i>
+                         {{ item.selected.data.name }}
+                    </li>
+                </ul>
+            </div>
+            <div class="button">规划路线 <i class="el-icon-s-promotion"></i></div>
+        </div>
     </div>
 
 </template>
@@ -17,6 +29,7 @@ export default {
         return {
             map: null,
             placeSearch: null,
+            planList: []
         };
     },
     mounted() {
@@ -52,6 +65,9 @@ export default {
                             autoFitView: true, //是否自动调整地图视野使绘制的 Marker 点都处于视口的可见范围
                         });
                         // this.placeSearch.search("北京大学"); //使用插件搜索关键字并查看结果
+                        this.placeSearch.on('selectChanged', (e) => {
+                            this.planList.push(e)
+                        })
                     });
                 })
                 .catch((e) => {
@@ -60,6 +76,9 @@ export default {
         },
         doSearch(place) {
             this.placeSearch.search(place)
+        },
+        delPlan(item, index) {
+            this.planList.splice(index, 1)
         }
     },
 };
@@ -77,5 +96,54 @@ export default {
   left: 50px;
   border-radius: 10px;
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+}
+.my-plan {
+position: fixed;
+  top: 100px;
+  right: 50px;
+  width: 350px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+  overflow: scroll;
+  &::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari, Opera */
+    }
+  max-height: 600px;
+  h3 {
+    padding: 20px;
+    background-color: #f5f5f5;
+    color: #6e7070;
+  }
+  .content {
+    padding: 20px;
+  }
+  .button {
+    height: 70px;
+    text-align: center;
+    line-height: 70px;
+    background-color: #45aae3;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  li {
+    padding: 5px;
+    height: 36px;
+    border-radius: 4px;
+    line-height: 26px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    background: #fff;
+    transition: all .5s;
+    margin-bottom: 10px;
+    &:hover {
+        background-color: #fdf0ab;
+    }
+    i {
+        margin: 0 10px;
+        color: #b9b9b8;
+        cursor: pointer;
+    }
+  }
 }
 </style>
