@@ -27,6 +27,10 @@ const routes = [
   {
     path: '/createitinerary',
     component: () => import('@/components/createitinerary/index.vue')
+  },
+  {
+    path: '/login',
+    component: () => import('@/views/login/index.vue')
   }
 ]
 

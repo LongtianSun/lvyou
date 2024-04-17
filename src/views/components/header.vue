@@ -2,7 +2,7 @@
     <div class="header">
         <div class="left">
             <h1></h1>
-            <ul>
+            <ul @click="showMessage">
                 <li><a href="">目的地</a></li>
                 <li><a href="">锦囊</a></li>
                 <li><a href="">社区</a></li>
@@ -13,14 +13,24 @@
             </ul>
         </div>
         <div class="right">
-            <a href="">登录</a>
+            <span v-if="$store.state.userInfo.username"><i class="el-icon-user-solid"></i> {{ $store.state.userInfo.username }}</span>
+            <a href="#/login" v-else>登录</a>
         </div>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'headerQY'
+    name: 'headerQY',
+    methods: {
+      showMessage(e) {
+        e.preventDefault()
+        this.$message({
+          message: '该功能还没有开放哦！',
+          center: true
+        });
+      }
+    }
 };
 </script>
 
@@ -60,6 +70,9 @@ export default {
     height: 30px;
     display: flex;
     align-items: center;
+    span {
+      color: #fff;
+    }
     a {
       color: silver;
       font-size: 14px;

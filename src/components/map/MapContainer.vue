@@ -5,12 +5,13 @@
         <div class="my-plan">
             <h3>我的行程</h3>
             <div class="content">
-                <ul>
+                <ul v-if="planList.length">
                     <li v-for="(item ,index) in planList" :key="item.selected.data.id">
                         <i class="el-icon-error" @click="delPlan(item, index)"></i>
                          {{ item.selected.data.name }}
                     </li>
                 </ul>
+                <img class="emty" src="@/assets/index/kkry.png" alt="" v-else>
             </div>
             <div class="button">规划路线 <i class="el-icon-s-promotion"></i></div>
         </div>
@@ -84,6 +85,9 @@ export default {
 };
 </script>
 <style lang="less" scoped>
+.emty {
+    width: 308px;
+}
 #container {
     padding: 0px;
     margin: 0px;
