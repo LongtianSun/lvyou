@@ -38,6 +38,10 @@ export default {
     },
     methods: {
         login() {
+            this.$message({
+                message: '登录成功',
+                type: 'success'
+            })
             this.$store.commit('setUserInfo', this.formData)
             this.$router.go(-1)
         }

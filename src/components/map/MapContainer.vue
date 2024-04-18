@@ -6,35 +6,42 @@
             <h3>我的行程</h3>
             <div class="content">
                 <ul v-if="planList.length">
-                    <li v-for="(item ,index) in planList" :key="item.selected.data.id">
+                    <li v-for="(item, index) in planList" :key="item.selected.data.id">
                         <i class="el-icon-error" @click="delPlan(item, index)"></i>
-                         {{ item.selected.data.name }}
+                        {{ item.selected.data.name }}
                     </li>
                 </ul>
                 <img class="emty" src="@/assets/index/kkry.png" alt="" v-else>
             </div>
-            <div class="button">规划路线 <i class="el-icon-s-promotion"></i></div>
+            <div class="button" @click="planRoute">规划路线 <i class="el-icon-s-promotion"></i></div>
         </div>
+        <PlanRoute ref="plan" @createPlan="createPlan"></PlanRoute>
     </div>
 
 </template>
 
 <script>
 import AMapLoader from "@amap/amap-jsapi-loader";
+import PlanRoute from "./PlanRoute.vue"
 window._AMapSecurityConfig = {
     securityJsCode: 'dc2b12f08e35af65685333ad83959c51'
 }
 export default {
     name: "map-view",
+    components: {
+        PlanRoute,
+    },
     data() {
         return {
             map: null,
             placeSearch: null,
-            planList: []
+            planList: [],
+            planRef: {}         // 规划路线弹框组件实例
         };
     },
     mounted() {
         this.initAMap();
+        this.planRef = this.$refs.plan
     },
     beforeDestroy() {
         this.map?.destroy();
@@ -80,6 +87,20 @@ export default {
         },
         delPlan(item, index) {
             this.planList.splice(index, 1)
+        },
+        planRoute() {
+            this.planRef.showPlan()
+        },
+        createPlan(hotel) {
+            const loading = this.$loading({
+                lock: true,
+                text: '正在为您规划路线...',
+                spinner: 'el-icon-loading',
+                background: 'rgba(0, 0, 0, 0.7)'
+            });
+            setTimeout(() => {
+                loading.close();
+            }, 2000);
         }
     },
 };
@@ -88,66 +109,79 @@ export default {
 .emty {
     width: 308px;
 }
+
 #container {
     padding: 0px;
     margin: 0px;
     width: 100%;
     height: 800px;
 }
+
 .show {
-  position: fixed;
-  top: 150px;
-  left: 50px;
-  border-radius: 10px;
-  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 150px;
+    left: 50px;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+    max-width: 300px;
 }
+
 .my-plan {
-position: fixed;
-  top: 100px;
-  right: 50px;
-  width: 350px;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
-  overflow: scroll;
-  &::-webkit-scrollbar {
-    display: none;  /* Chrome, Safari, Opera */
+    position: fixed;
+    top: 100px;
+    right: 50px;
+    width: 350px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+    overflow: scroll;
+
+    &::-webkit-scrollbar {
+        display: none;
+        /* Chrome, Safari, Opera */
     }
-  max-height: 600px;
-  h3 {
-    padding: 20px;
-    background-color: #f5f5f5;
-    color: #6e7070;
-  }
-  .content {
-    padding: 20px;
-  }
-  .button {
-    height: 70px;
-    text-align: center;
-    line-height: 70px;
-    background-color: #45aae3;
-    color: #fff;
-    font-size: 20px;
-    cursor: pointer;
-  }
-  li {
-    padding: 5px;
-    height: 36px;
-    border-radius: 4px;
-    line-height: 26px;
-    box-shadow: 0 1px 2px rgba(0,0,0,.2);
-    background: #fff;
-    transition: all .5s;
-    margin-bottom: 10px;
-    &:hover {
-        background-color: #fdf0ab;
+
+    max-height: 600px;
+
+    h3 {
+        padding: 20px;
+        background-color: #f5f5f5;
+        color: #6e7070;
     }
-    i {
-        margin: 0 10px;
-        color: #b9b9b8;
+
+    .content {
+        padding: 20px;
+    }
+
+    .button {
+        height: 70px;
+        text-align: center;
+        line-height: 70px;
+        background-color: #45aae3;
+        color: #fff;
+        font-size: 20px;
         cursor: pointer;
     }
-  }
+
+    li {
+        padding: 5px;
+        height: 36px;
+        border-radius: 4px;
+        line-height: 26px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+        background: #fff;
+        transition: all .5s;
+        margin-bottom: 10px;
+
+        &:hover {
+            background-color: #fdf0ab;
+        }
+
+        i {
+            margin: 0 10px;
+            color: #b9b9b8;
+            cursor: pointer;
+        }
+    }
 }
 </style>
