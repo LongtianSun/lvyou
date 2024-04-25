@@ -31,6 +31,10 @@ const routes = [
   {
     path: '/login',
     component: () => import('@/views/login/index.vue')
+  },
+  {
+    path: '/itineraryhome',
+    component: () => import('@/views/itineraryhome/index.vue')
   }
 ]
 

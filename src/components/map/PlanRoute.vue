@@ -1,6 +1,6 @@
 <template>
-	<el-dialog title="选择酒店" width="55%" :visible.sync="isShow">
-		<div class="father">
+	<el-dialog title="选择酒店" width="55%" :visible.sync="isShow" @opened="opened">
+		<div class="father" v-loading="loading" element-loading-text="正在为您寻找周围酒店">
 			<p>周围为您找到一些酒店，选择一家酒店作为咱的落脚地吧！</p>
 			<div class="content">
 				<div class="Hotel" @click="createPlan(item)" v-for="(item,index) in hotelList" :key="index">
@@ -30,8 +30,19 @@
 export default {
 	data() {
 		return {
-			isShow: true,
-			hotelList: [
+			loading: false,
+			isShow: false,
+			hotelList: []
+		}
+	},
+	methods: {
+		showPlan() {
+			this.isShow = true
+		},
+		opened() {
+			this.loading = true
+			setTimeout(() => {
+				this.hotelList = [
 				{
 					imgUrl: './hotel/1.jpg',
 					name: '国际连锁酒店',
@@ -51,11 +62,8 @@ export default {
 					price: 122
 				},
 			]
-		}
-	},
-	methods: {
-		showPlan() {
-			this.isShow = true
+			this.loading = false
+			}, 3000);
 		},
 		createPlan(hotel) {
 			this.isShow = false

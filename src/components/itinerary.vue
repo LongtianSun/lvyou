@@ -62,7 +62,7 @@
             </div>
             <div class="right">
                 <div class="new-post" @click="$router.push('/createitinerary')"><i class="el-icon-edit"></i>创建我的行程</div>
-                <div class="goto-forum">行程助手首页</div>
+                <div class="goto-forum" @click="$router.push('/itineraryhome')">行程助手首页</div>
             </div>
         </div>
     </div>
