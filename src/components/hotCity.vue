@@ -5,42 +5,15 @@
       <div class="tap">
         <ul>
           <li>热门推荐</li>
-          <li>日韩 港澳台</li>
-          <li>东南亚及亚洲其他</li>
-          <li>欧洲</li>
-          <li>大洋洲 北美</li>
-          <li>非洲 南美</li>
+          <li v-for="(item, i) in fatherList" :class="{ active: i === active }" :key="i" @click="tabClick(item, i)">{{ item.name }}</li>
         </ul>
       </div>
       <div class="body-box">
         <ul>
-          <li>
-            <div class="title">泰国</div>
+          <li v-for="(item, index) in hotList" :key="index">
+            <div class="title">{{ item.name }}</div>
             <div class="body">
-              <span>曼谷</span>
-              <span>普吉岛</span>
-              <span>苏梅岛</span>
-              <span>芭提雅</span>
-              <span>甲米</span>
-              <span>花心</span>
-              <span>皮皮岛</span>
-            </div>
-          </li>
-          <li>
-            <div class="title">新加坡</div>
-            <div class="body">
-              <span>新加坡</span>
-            </div>
-          </li>
-          <li>
-            <div class="title">越南</div>
-            <div class="body">
-              <span>芽庄</span>
-              <span>胡志明市</span>
-              <span>河内</span>
-              <span>美奈</span>
-              <span>达纳</span>
-              <span>富国岛</span>
+              <span v-for="(a, i) in item.city" :key="i">{{ a }}</span>
             </div>
           </li>
         </ul>
@@ -51,34 +24,146 @@
 
 <script>
 export default {
-    name: 'hotCity',
-    data () {
-        return {
-          activeName: 'second'
+  name: 'hotCity',
+  data() {
+    return {
+      activeName: 'second',
+      active: 0,
+      fatherList: [
+      {
+          name: '日韩 港澳台',
+          list: [
+            {
+              name: '港澳台',
+              city: ['香港', '澳门', '台北', '垦丁', '花莲', '高雄市', '台中市', '九份', '台南', '淡水', '宜兰']
+            },
+            {
+              name: '日本',
+              city: ['东京', '大阪', '京都', '冲绳', '北海道', '名古屋', '奈良', '札幌', '富士山地区', '镰仓', '神户']
+            },
+            {
+              name: '韩国',
+              city: ['首尔', '济州岛', '釜山']
+            },
+          ]
+        },
+        {
+          name: '东南亚及亚洲其他',
+          list: [
+            {
+              name: '泰国',
+              city: ['曼谷', '普吉岛', '苏梅岛', '芭提雅', '甲米', '花心', '皮皮岛']
+            },
+            {
+              name: '新加坡',
+              city: ['新加坡']
+            },
+            {
+              name: '越南',
+              city: ['芽庄', '胡志明市', '河内', '美奈', '达纳', '富国岛']
+            },
+          ]
+        },
+        {
+          name: '欧洲',
+          list: [
+            {
+              name: '泰国',
+              city: ['曼谷', '普吉岛', '苏梅岛', '芭提雅', '甲米', '花心', '皮皮岛']
+            },
+            {
+              name: '新加坡',
+              city: ['新加坡']
+            },
+            {
+              name: '越南',
+              city: ['芽庄', '胡志明市', '河内', '美奈', '达纳', '富国岛']
+            },
+          ]
+        },
+        {
+          name: '大洋洲 北美',
+          list: [
+            {
+              name: '泰国',
+              city: ['曼谷', '普吉岛', '苏梅岛', '芭提雅', '甲米', '花心', '皮皮岛']
+            },
+            {
+              name: '新加坡',
+              city: ['新加坡']
+            },
+            {
+              name: '越南',
+              city: ['芽庄', '胡志明市', '河内', '美奈', '达纳', '富国岛']
+            },
+          ]
+        },
+        {
+          name: '非洲 南美',
+          list: [
+            {
+              name: '泰国',
+              city: ['曼谷', '普吉岛', '苏梅岛', '芭提雅', '甲米', '花心', '皮皮岛']
+            },
+            {
+              name: '新加坡',
+              city: ['新加坡']
+            },
+            {
+              name: '越南',
+              city: ['芽庄', '胡志明市', '河内', '美奈', '达纳', '富国岛']
+            },
+          ]
         }
-    },
-    methods: {
-      handleClick(tab, event) {
-        console.log(tab, event);
-      }
+      ],
+      hotList: [
+        {
+          name: '泰国',
+          city: ['曼谷', '普吉岛', '苏梅岛', '芭提雅', '甲米', '花心', '皮皮岛']
+        },
+        {
+          name: '新加坡',
+          city: ['新加坡']
+        },
+        {
+          name: '越南',
+          city: ['芽庄', '胡志明市', '河内', '美奈', '达纳', '富国岛']
+        },
+      ]
     }
+  },
+  methods: {
+    tabClick(item,index) {
+      this.active = index
+      this.hotList = item.list
+    }
+  }
 }
 </script>
 
 <style scoped lang="less">
+.active {
+  color: #520000;
+  border-bottom: 2px solid #28b76c;
+}
+
 .father {
   padding-top: 70px;
+
   .title {
     text-align: center;
     font-size: 24px;
     color: #000
   }
+
   .context {
     width: 980px;
     margin: 40px auto;
+
     .tap {
       width: 780px;
       margin: 0 auto;
+
       ul {
         display: flex;
         border-bottom: 1px solid #e5e5e5;
@@ -87,32 +172,39 @@ export default {
         font-size: 18px;
         color: #929292;
         cursor: pointer;
+
         li:hover {
           color: #520000;
-        border-bottom: 2px solid #28b76c;
+          border-bottom: 2px solid #28b76c;
         }
       }
     }
+
     .body-box {
       margin-top: 15px;
+
       ul {
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
+
         li {
           width: 306px;
           height: 100px;
           // background-color: pink;
           margin-top: 30px;
+
           .title {
             font-size: 16px;
             text-align: left;
-            margin-bottom:5px;
+            margin-bottom: 5px;
           }
+
           .body {
             font-size: 14px;
             display: flex;
             flex-wrap: wrap;
+
             span {
               margin-right: 21px;
               margin-top: 10px;
@@ -123,5 +215,4 @@ export default {
     }
   }
 }
-
 </style>

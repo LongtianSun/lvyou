@@ -1,5 +1,5 @@
 <template>
-	<el-dialog title="选择酒店" width="55%" :visible.sync="isShow" @opened="opened">
+	<el-dialog title="选择酒店" width="55%" :visible.sync="isShow" @open="opened">
 		<div class="father" v-loading="loading" element-loading-text="正在为您寻找周围酒店">
 			<p>周围为您找到一些酒店，选择一家酒店作为咱的落脚地吧！</p>
 			<div class="content">
@@ -45,7 +45,8 @@ export default {
 				this.hotelList = [
 				{
 					imgUrl: './hotel/1.jpg',
-					name: '国际连锁酒店',
+					name: '百富怡大酒店',
+					coordinates: [116.444114, 39.94307],
 					score: 4,
 					price: 122
 				},

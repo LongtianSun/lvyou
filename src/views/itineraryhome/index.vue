@@ -35,7 +35,7 @@
             </div>
             <div class="right">
                 <div class="header">
-                    <div class="create-plan">
+                    <div class="create-plan" @click="createRoute">
                         + 创建行程
                     </div>
                 </div>
@@ -53,7 +53,12 @@ import ItineraryItem from '../components/ItineraryItem.vue'
 export default {
     components: {
         headerQY,
-        ItineraryItem
+        ItineraryItem,
+    },
+    methods: {
+        createRoute() {
+            this.$router.push('/createitinerary')
+        }
     }
 }
 </script>

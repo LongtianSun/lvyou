@@ -6,9 +6,9 @@
             <h3>我的行程</h3>
             <div class="content">
                 <ul v-if="planList.length">
-                    <li v-for="(item, index) in planList" :key="item.selected.data.id">
+                    <li v-for="(item, index) in planList" :key="index">
                         <i class="el-icon-error" @click="delPlan(item, index)"></i>
-                        {{ item.selected.data.name }}
+                        {{ item.data.name }}
                     </li>
                 </ul>
                 <img class="emty" src="@/assets/index/kkry.png" alt="" v-else>
@@ -73,7 +73,7 @@ export default {
                             autoFitView: true, //是否自动调整地图视野使绘制的 Marker 点都处于视口的可见范围
                         });
                         // this.placeSearch.search("北京大学"); //使用插件搜索关键字并查看结果
-                        this.placeSearch.on('selectChanged', (e) => {
+                        this.placeSearch.on('listElementClick', (e) => {
                             this.planList.push(e)
                         })
                     });
@@ -92,6 +92,14 @@ export default {
             this.planRef.showPlan()
         },
         createPlan(hotel) {
+            const localData = this.planList.map(item => {
+                return {
+                    name: item.data.name,
+                    coordinates: [item.data.entr_location.lng, item.data.entr_location.lat]
+                }
+            })
+            localStorage.setItem('Hotel', JSON.stringify({name: hotel.name, coordinates: hotel.coordinates}))
+            localStorage.setItem('listData', JSON.stringify(localData))
             const loading = this.$loading({
                 lock: true,
                 text: '正在为您规划路线...',
@@ -99,14 +107,18 @@ export default {
                 background: 'rgba(0, 0, 0, 0.7)'
             });
             setTimeout(() => {
+
                 loading.close();
                 this.$confirm('行程创建完成!', '提示', {
                     confirmButtonText: '预览',
                     cancelButtonText: '进入行程主页',
-                    
                     type: 'warning'
                 }).then(() => {
+                    console.log('这里是预览')
+                    this.$router.replace('/detailMap?id=1')
                 }).catch(() => {
+                    console.log('这里是进入行程主页')
+                    this.$router.replace('/itineraryhome')
                 });
             }, 2000);
         }
