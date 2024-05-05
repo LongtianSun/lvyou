@@ -64,7 +64,7 @@ export default {
 				},
 			]
 			this.loading = false
-			}, 3000);
+			}, 1000);
 		},
 		createPlan(hotel) {
 			this.isShow = false

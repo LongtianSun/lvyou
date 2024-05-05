@@ -5,13 +5,13 @@
         </div>
         <div class="li-right">
             <div class="row1">
-                <h2 @click="goDetail">武汉假期游 欢乐谷-黄鹤楼-武汉长江大桥-八分山</h2>
+                <h2 @click="goDetail">{{ itineraryInfo.hotel.name }} {{str}}</h2>
                 <a href=""><i class="el-icon-document-copy"></i> 复制行程</a>
             </div>
             <div class="row2">
                 <i class="el-icon-date"></i> 2018-02-14 出发
             </div>
-            <div class="row3">欢乐谷 · 黄鹤楼 · 武汉长江大桥 · 八分山</div>
+            <div class="row3">{{ str2 }}</div>
             <div class="row4">
                 <span>购物</span>
                 <span>美食</span>
@@ -32,6 +32,40 @@
 
 <script>
 export default {
+    props: {
+        itineraryInfo: {
+            type: Object,
+            default: {
+                hotel: {
+                    name: '武汉假期游'
+                },
+                list: [
+                    {
+                        name: '欢乐谷'
+                    },
+                    {
+                        name: '黄鹤楼'
+                    },
+                    {
+                        name: '武汉长江大桥'
+                    },
+                    {
+                        name: '八分山'
+                    },
+                ]
+            }
+        }
+    },
+    computed: {
+        str() {
+            const arr = this.itineraryInfo.list.map(item => item.name)
+            return arr.join(' - ')
+        },
+        str2() {
+            const arr = this.itineraryInfo.list.map(item => item.name)
+            return arr.join(' · ')
+        }
+    },
     methods: {
         goDetail() {
             this.$router.push('/detail')

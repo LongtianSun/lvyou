@@ -40,7 +40,7 @@
                     </div>
                 </div>
                 <ul>
-                    <ItineraryItem></ItineraryItem>
+                    <ItineraryItem :itineraryInfo="item" v-for="(item, i) in myListData" :key="i"></ItineraryItem>
                 </ul>
             </div>
         </div>
@@ -54,6 +54,14 @@ export default {
     components: {
         headerQY,
         ItineraryItem,
+    },
+    data() {
+        return {
+            myListData: {}
+        }
+    },
+    created() {
+        this.myListData = JSON.parse(localStorage.getItem('myListData') || '{}')
     },
     methods: {
         createRoute() {

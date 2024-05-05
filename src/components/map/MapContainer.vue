@@ -74,7 +74,12 @@ export default {
                         });
                         // this.placeSearch.search("北京大学"); //使用插件搜索关键字并查看结果
                         this.placeSearch.on('listElementClick', (e) => {
-                            this.planList.push(e)
+                            console.log(e)
+                            if(e.data.entr_location) {
+                                this.planList.push(e)
+                            }else {
+                                this.$message.error('此景点已过期')
+                            }
                         })
                     });
                 })
@@ -92,6 +97,7 @@ export default {
             this.planRef.showPlan()
         },
         createPlan(hotel) {
+            console.log('this.planList', this.planList)
             const localData = this.planList.map(item => {
                 return {
                     name: item.data.name,
@@ -100,6 +106,12 @@ export default {
             })
             localStorage.setItem('Hotel', JSON.stringify({name: hotel.name, coordinates: hotel.coordinates}))
             localStorage.setItem('listData', JSON.stringify(localData))
+            const localDataArr = JSON.parse(localStorage.getItem('myListData') || '[]')
+            localDataArr.push({
+                hotel: {name: hotel.name, coordinates: hotel.coordinates},
+                list: localData
+            })
+            localStorage.setItem('myListData', JSON.stringify(localDataArr))
             const loading = this.$loading({
                 lock: true,
                 text: '正在为您规划路线...',
