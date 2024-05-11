@@ -122,12 +122,7 @@ export default {
                     panel: "panel"
                 });
                 // 根据起终点经纬度规划驾车导航路线
-                this.driving.search(new this.AMap.LngLat(...start), new this.AMap.LngLat(...end), (status, result) => {
-                    if (status === 'complete') {
-                        // this.map.setCenter([116.442581,39.882498])
-                    } else {
-                    }
-                });
+                this.driving.search(new this.AMap.LngLat(...start), new this.AMap.LngLat(...end));
             }
         },
         // 实例化点标记

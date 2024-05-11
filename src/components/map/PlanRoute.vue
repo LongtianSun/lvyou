@@ -27,13 +27,25 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
 	data() {
 		return {
 			loading: false,
 			isShow: false,
-			hotelList: []
+			hotelList: [],
+			list1: [1,2,3,4,5,6]
 		}
+	},
+	created() {
+		// const list = []
+		// this.list1.forEach((item, index) => {
+		// 	if(index <= 2) {
+		// 		list.push(item)
+		// 	}
+		// })
+		// console.log(list)
 	},
 	methods: {
 		showPlan() {
@@ -65,6 +77,17 @@ export default {
 			]
 			this.loading = false
 			}, 1000);
+		},
+		async getHotel() {
+			this.loading = true
+			const res = await axios({
+				url: '/api/getNearbyHotels',
+				method: 'POST',
+				data: {
+					list: this.planList
+				}
+			})
+			this.hotelList = res.data.map((item, index) => index <= 2)
 		},
 		createPlan(hotel) {
 			this.isShow = false

@@ -43,13 +43,13 @@
                 </div>
             </div>
             <div class="right">
-
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import request from '@/utils/request'
 export default {
     data() {
         return {
@@ -93,6 +93,16 @@ export default {
     methods: {
         async login() {
             await this.formRef.validate()
+            const res = await request({
+                method: 'POST',
+                url: '/api/login',
+                data: this.formData
+            })
+            if(res.status !== 200) {
+                return this.$message.error(res.message)
+            }
+            this.$store.commit('setUserInfo', res.token)
+            this.$store.commit('setToken', res.token)
             this.$message({
                 message: '登录成功',
                 type: 'success'

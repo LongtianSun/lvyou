@@ -4,7 +4,7 @@
     <div class="banner">
       <div class="title-box">你好, 世界!</div>
       <div class="search">
-        <input placeholder="搜索城市、目的地" type="text">
+        <input v-model="searchKey" placeholder="搜索城市、目的地" type="text">
         <div class="right" @click="search"><i class="el-icon-search"></i> 搜索</div>
       </div>
     </div>
@@ -24,9 +24,14 @@ export default {
     hotCity,
     headerQY
   },
+  data() {
+    return {
+      searchKey: ''
+    }
+  },
   methods: {
     search() {
-      this.$router.push('/itinerary')
+      this.$router.push('/itinerary?searchKey=' + this.searchKey)
     }
   }
 }

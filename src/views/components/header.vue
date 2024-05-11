@@ -1,7 +1,7 @@
 <template>
     <div class="header">
         <div class="left">
-            <h1></h1>
+            <!-- <h1></h1> -->
             <ul @click="showMessage">
                 <li><a href="">目的地</a></li>
                 <li><a href="">锦囊</a></li>

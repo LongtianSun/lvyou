@@ -5,8 +5,8 @@
         <div class="top">
             <div class="wrapper">
                 <div class="search">
-                    <input type="text">
-                    <button><i class="el-icon-search"></i></button>
+                    <input type="text" v-model="searchKey">
+                    <button @click="doSearch"><i class="el-icon-search"></i></button>
                     <div class="question">
                         <i class="el-icon-plus"></i>
                         提问
@@ -29,7 +29,7 @@
             <div class="left">
                 <p>为您找到"武汉"相关行程结果 <span>46429</span> 条</p>
                 <ul>
-                    <li v-for="(item, index) in 5" :key="index">
+                    <li v-for="(item, index) in count" :key="index">
                         <div class="li-left" @click="goDetail">
                             <img src="@/assets/index/wuhan.png" alt="">
                         </div>
@@ -70,6 +70,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import headerQY from '@/views/components/header'
 export default {
     components: {
@@ -77,9 +78,63 @@ export default {
     },
     data() {
         return {
-            name: 'skt'
+            name: 'skt',
+            count: 5,
+            searchKey: '',
+            page: 1,
+            pageSize: 10,
+            total: 0,
+            loading: false
         }
     },
+    created() {
+        this.$route.query.searchKey && (this.searchKey = this.$route.query.searchKey)
+        // this.doSearch()
+        // window.addEventListener('scroll', this.scrollbottom)
+    },
+    methods: {
+        
+        load() {
+            console.log('load')
+        },
+        goDetail() {
+            this.$router.push('/detail')
+        },
+        scrollbottom() {
+            // 页面可视区域的高度
+            let clientHeight = document.documentElement.clientHeight;
+            // 页面滚动的高度
+            let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            // 页面的总高度
+            let scrollHeight = document.documentElement.scrollHeight;
+            // 判断是否滚动到底部
+            if (clientHeight + scrollTop >= scrollHeight) {
+                this.page++
+                if(this.page * this.pageSize >= this.total) return
+                if(this.loading) return
+                this.doSearch()
+            }
+        },
+        async doSearch() {
+            this.loading = true
+            const res = await axios({
+                url: '/api/getItinerary',
+                method: 'GET',
+                params: {
+                    searchKey: this.searchKey,
+                    page: this.page,
+                    pageSize: this.pageSize
+                }
+            })
+            this.loading = false
+            this.total = res.data.total
+            this.itineraryList = [...this.itinerary, ...res.data.list]
+        },
+    },
+    destroyed() {
+        // 切换路由时移除window绑定scroll事件
+        window.removeEventListener('scroll', this.scrollEvent)
+    }
     // beforeCreate() {
     //     console.log('beforeCreate',this.name,this.goDetail)
     // },
@@ -92,11 +147,8 @@ export default {
     // mounted() {
     //     console.log('mounted',this.name,this.goDetail)
     // },
-    methods: {
-        goDetail() {
-            this.$router.push('/detail')
-        }
-    }
+        
+
 }
 </script>
 
