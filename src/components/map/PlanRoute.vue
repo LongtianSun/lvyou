@@ -87,7 +87,12 @@ export default {
 					list: this.planList
 				}
 			})
-			this.hotelList = res.data.map((item, index) => index <= 2)
+			this.loading = false
+			res.data.list.forEach((item, index) => {
+				if(index <= 2) {
+					this.hotelList.push(item)
+				}
+			})
 		},
 		createPlan(hotel) {
 			this.isShow = false

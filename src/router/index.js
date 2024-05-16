@@ -1,3 +1,4 @@
+import store from '@/store/index'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
@@ -42,6 +43,21 @@ const router = new VueRouter({
   routes,
   scrollBehavior: (to, from, savedPosition) => {
     return savedPosition || { x: 0, y: 0 }
+  }
+})
+
+const arr = ['/itineraryhome', '/createitinerary']
+
+router.beforeEach((to, form, next) => {
+  if(arr.includes(to.fullPath)) {
+    if(!store.state.userInfo.username) {
+      alert('请先登录')
+      next('/login')
+    }else {
+      next()
+    }
+  }else {
+    next()
   }
 })
 
