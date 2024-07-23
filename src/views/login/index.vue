@@ -92,7 +92,7 @@ export default {
     },
     methods: {
         async login() {
-            await this.formRef.validate()
+            await this.formRef.validate() 
             // const res = await request({
             //     method: 'POST',
             //     url: '/api/login',
