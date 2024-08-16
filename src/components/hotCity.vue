@@ -204,7 +204,6 @@ export default {
         li {
           width: 306px;
           height: 100px;
-          // background-color: pink;
           margin-top: 30px;
 
           .title {

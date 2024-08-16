@@ -165,7 +165,6 @@ export default {
     position: fixed;
     top: 50px;
     left: 290px;
-    background-color: pink;
     overflow: scroll;
     border-radius: 10px;
 }

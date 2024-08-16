@@ -87,7 +87,6 @@ export default {
 
 .banner {
   height: 500px;
-  background-color: pink;
   background-image: url(@/assets/index/banner.png);
   background-size: cover;
   padding-top: 162px;
@@ -103,7 +102,6 @@ export default {
     margin: 40px auto;
     width: 760px;
     height: 60px;
-    background-color: pink;
     border-radius: 5px;
     box-shadow: 0 0 15px rgba(0,0,0,.1);
     .right {
